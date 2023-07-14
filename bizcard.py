@@ -47,7 +47,7 @@ def insert_data(name, phone, email, company, image):
 # Streamlit app
 uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
-    image = cv2.imdecode(np.fromstring(uploaded_file.read(), np.uint8), 1)
+    image = cv2.imdecode(np.frombuffer(uploaded_file.read(), np.uint8), 1)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 
