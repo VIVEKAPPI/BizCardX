@@ -1,4 +1,4 @@
-
+#importing required libraries
 import streamlit as st
 import cv2
 import numpy as np
@@ -7,7 +7,7 @@ import sqlite3
 import mysql.connector
 
 #streamlit app title and title
-st.title("Business Card OCR")
+st.title("Business Card DATA EXTRACTION")
 st.sidebar.header("UPLOAD IMAGE")
 st.set_option('deprecation.showfileUploaderEncoding', True)
 
@@ -45,15 +45,15 @@ def insert_data(name, phone, email, company, image):
     conn.close()
 
 # Streamlit app
-uploaded_file = st.sidebar.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
     image = cv2.imdecode(np.fromstring(uploaded_file.read(), np.uint8), 1)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 
-    st.sidebar.image(image, caption='Uploaded Image', use_column_width=True)
+    st.image(image, caption='Uploaded Image', use_column_width=True)
 # Performing OCR when the "Extract Text" button is clicked
-    if st.sidebar.button('Extract Text'):
+    if st.button('Extract Text'):
         ocr_result = perform_ocr(image)
         extracted_text = [text[1] for text in ocr_result]
 
