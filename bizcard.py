@@ -8,7 +8,7 @@ import mysql.connector
 
 #streamlit app title and title
 st.title("Business Card DATA EXTRACTION")
-st.sidebar.header("UPLOAD IMAGE")
+st.header("UPLOAD IMAGE")
 st.set_option('deprecation.showfileUploaderEncoding', True)
 
 #Creating SQLite database and table
